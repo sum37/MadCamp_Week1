@@ -11,31 +11,76 @@ import com.example.week1.databinding.FragmentPhoneBinding
 
 class PhoneFragment : Fragment() {
 
+    companion object {
+        const val PERMISSION_REQUEST_CODE = 100
+    }
 
     private var _binding: FragmentPhoneBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     // FragmentPhoneBinding이 본 페이지에 해당하는 xml 과 이 파일을 연결해주는거임
-    private val binding get() = _binding!!
-    override fun onCreateView(
-        inflater: LayoutInflater, // xml layout file을 view 객체로 보여준다
-        container: ViewGroup?, //
-        savedInstanceState: Bundle? // 이전에 저장한 상태 데이터를 사용해 프래그먼트 복제, 화면회전과 같은 상황에서 fragment유지할 수 있음
-    ): View {
 
-        val view =
-            ViewModelProvider(this).get(PhoneViewModel::class.java)
-        // viewModelProvider는 ViewModel을 생성하고 반환한다.
-        _binding = FragmentPhoneBinding.inflate(inflater, container, false)
-        // 여기서 fragment_phone을 view로 보여주는거임
-        val root: View = binding.root
-        // binding.root는 여기서 생성된 FragmentPhoneBinding의 최상위 View를 참조하는겁니다.
+    private val binding by lazy { FragmentPhoneBinding.inflate(layoutInflater) }
+    private var contactsAdapter: ContactsAdapter? = null
+    private var contactsList = ArrayList<ContactsData>()
 
-        return root // binding의 root view를 return 한다.
+//    override
+    fun onClick(v: View?) {
+        when (v) {
+            binding.btnPermission -> {
+                requestPermission()
+            }
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        initLayout()
+        initListener()
+
+        onCheckContactsPermission()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onCheckContactsPermission()
+    }
+
+    private fun initLayout() {
+        setContentView(binding.root)
+        binding.includeTitle.txtTitle.text = "주소록"
+    }
+
+    private fun initListener() {
+        binding.btnPermission.setOnClickListener(this)
+        binding.btnAddContacts.setOnClickListener(this)
+        binding.includeTitle.btnDelete.setOnClickListener(this)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun onCheckContactsPermission() {
+        val permissionDenied = checkSelfPermission(Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_DENIED
+                || checkSelfPermission(Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED
+
+        binding.btnPermission.isVisible = permissionDenied
+        binding.txtDescription.isVisible = permissionDenied
+        binding.btnAddContacts.isVisible = !permissionDenied
+        binding.contactsList.isVisible = !permissionDenied
+        if (permissionDenied) {
+            binding.txtDescription.text = "권한을 허용하셔야 이용하실 수 있습니다."
+        } else {
+            getContactsList()
+        }
+    }
+
+    private fun requestPermission() {
+        requestPermissions(arrayOf(Manifest.permission.WRITE_CONTACTS, Manifest.permission.READ_CONTACTS), PERMISSION_REQUEST_CODE)
+    }
+
+
 }
