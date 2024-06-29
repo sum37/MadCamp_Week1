@@ -1,49 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/ripple_bg_list">
+    android:background="#FFFFFF"
+    android:padding="2dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- 상단 가이드라인, 화면의 50% 위치에 설정 -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- 첫 번째 열 -->
+    <LinearLayout
+        android:id="@+id/column1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/contact_back"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingVertical="10dp"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/default_image" />
 
         <TextView
-            android:id="@+id/txtName"
-            android:layout_width="0dp"
+            android:id="@+id/txtName1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ellipsize="end"
-            android:maxEms="5"
-            android:maxLines="1"
-            android:minEms="5"
-            android:paddingVertical="4dp"
             android:text="이수민"
             android:textColor="#333333"
             android:textSize="18dp"
             android:textStyle="bold"
-            app:autoSizeMinTextSize="14dp"
-            app:autoSizeTextType="uniform" />
+            android:layout_margin="10dp" />
 
         <TextView
-            android:id="@+id/txtPhoneNumber"
+            android:id="@+id/txtPhoneNumber1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="end"
             android:textSize="16dp"
-            android:text = "010-0000-0000"/>
+            android:text="010-0000-0000"
+            android:layout_margin="10dp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginHorizontal="20dp"
-        android:background="#10000000"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <!-- 두 번째 열 -->
+    <LinearLayout
+        android:id="@+id/column2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/contact_back"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/default_image" />
+
+        <TextView
+            android:id="@+id/txtName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김철수"
+            android:textColor="#333333"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/txtPhoneNumber2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textSize="16dp"
+            android:text="010-1234-5678"
+            android:layout_margin="10dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

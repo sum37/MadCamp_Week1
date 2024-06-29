@@ -1,5 +1,6 @@
 package com.example.week1.ui.Phone
 
+import ContactsAdapter
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
@@ -52,16 +53,14 @@ class PhoneFragment : Fragment(), View.OnClickListener {
     }
 
     private fun initLayout() {
-        binding.includeTitle.txtTitle.text = "주소록"
+//        binding.includeTitle.txtTitle.text = "주소록"
         binding.contactsList.layoutManager = LinearLayoutManager(context)
-        contactsAdapter = ContactsAdapter(contactsList)
-        binding.contactsList.adapter = contactsAdapter
     }
 
     private fun initListener() {
         binding.btnPermission.setOnClickListener(this)
         binding.btnAddContacts.setOnClickListener(this)
-        binding.includeTitle.btnDelete.setOnClickListener(this)
+//        binding.includeTitle.btnDelete.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -72,9 +71,9 @@ class PhoneFragment : Fragment(), View.OnClickListener {
             binding.btnAddContacts -> {
                 // 연락처 추가 기능 구현
             }
-            binding.includeTitle.btnDelete -> {
-                // 삭제 기능 구현
-            }
+//            binding.includeTitle.btnDelete -> {
+//                // 삭제 기능 구현
+//            }
         }
     }
 
@@ -131,6 +130,18 @@ class PhoneFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    private fun prepareContactPairs(contacts: List<ContactsData>): List<ContactPair> {
+        val contactPairs = mutableListOf<ContactPair>()
+
+        for (i in contacts.indices step 2) {
+            val contact1 = contacts[i]
+            val contact2 = if (i + 1 < contacts.size) contacts[i + 1] else null
+            contactPairs.add(ContactPair(contact1, contact2))
+        }
+
+        return contactPairs
+    }
+
     private fun getContactsList() {
         val contacts = requireContext().contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null)
         val list = ArrayList<ContactsData>()
@@ -146,10 +157,10 @@ class PhoneFragment : Fragment(), View.OnClickListener {
         contacts?.close()
         contactsList.clear()
         contactsList.addAll(list)
-        setContacts()
-    }
 
-    private fun setContacts() {
+        val contactPairs = prepareContactPairs(contactsList)
+        contactsAdapter = ContactsAdapter(contactPairs)
+        binding.contactsList.adapter = contactsAdapter
         contactsAdapter?.notifyDataSetChanged()
     }
 }
