@@ -1,9 +1,12 @@
 package com.example.week1
 
+import android.app.Dialog
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.week1.databinding.ItemImageBinding
 
@@ -28,14 +31,33 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
 
     override fun getItemCount(): Int = imageUris.size
 
-    class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(uri: String) {
             val context = binding.root.context
             val inputStream = context.contentResolver.openInputStream(Uri.parse(uri))
             val bitmap = BitmapFactory.decodeStream(inputStream)
             binding.imageView.setImageBitmap(bitmap)
+
+            binding.imageView.setOnClickListener {
+                showImageDialog(context, uri)
+            }
+        }
+
+        private fun showImageDialog(context: Context, imageUri: String) {
+            val dialog = Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+            dialog.setContentView(R.layout.dialog_image)
+            val expandedImage = dialog.findViewById<ImageView>(R.id.expanded_image)
+            val inputStream = context.contentResolver.openInputStream(Uri.parse(imageUri))
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            expandedImage.setImageBitmap(bitmap)
+            expandedImage.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
         }
     }
 }
+
+
 
