@@ -14,12 +14,8 @@
     <color name="mainblue">#4098FF</color>
     <color name="mainpurple">#DD7CFF</color>
     <color name="mainpink">#FF9CD2</color>
-
-<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-<!--        &lt;!&ndash; Customize your theme here &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
-<!--    </style>-->
+    <color name="color_option1">#FF9CD2</color>
+    <color name="color_option2">#DD7CFF</color>
+    <color name="color_option3">#4098FF</color>
 
 </resources>

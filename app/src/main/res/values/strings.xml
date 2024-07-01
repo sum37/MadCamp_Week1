@@ -3,21 +3,4 @@
     <string name="title_Phone">Phone</string>
     <string name="title_Gallery">Gallery.</string>
     <string name="title_Avatar">Avatar</string>
-    <string-array name="color_options">
-        <item>Red</item>
-        <item>Green</item>
-        <item>Blue</item>
-    </string-array>
-
-    <string-array name="glasses_options">
-        <item>None</item>
-        <item>Round</item>
-        <item>Square</item>
-    </string-array>
-
-    <string-array name="hat_options">
-        <item>None</item>
-        <item>Beanie</item>
-        <item>Cap</item>
-    </string-array>
 </resources>

@@ -10,17 +10,17 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/color_option1" />
+        android:background="@drawable/hat1" />
 
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/color_option2" />
+        android:background="@drawable/hat2" />
 
     <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/color_option3" />
+        android:background="@drawable/hat3" />
 </LinearLayout>

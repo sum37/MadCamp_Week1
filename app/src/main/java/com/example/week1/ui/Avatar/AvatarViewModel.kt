@@ -1,18 +1,14 @@
 package com.example.week1.ui.Avatar
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class AvatarViewModel : ViewModel() {
 
-//    private val _text = MutableLiveData<String>().apply {
-//        value = "This is avatar Fragment"
-//    }
-//    val text: LiveData<String> = _text
-
-    private val _color = MutableLiveData<String>()
-    val color: LiveData<String> = _color
+    private val _color = MutableLiveData<Int>()
+    val color: LiveData<Int> = _color
 
     private val _glasses = MutableLiveData<String>()
     val glasses: LiveData<String> = _glasses
@@ -26,8 +22,9 @@ class AvatarViewModel : ViewModel() {
     private val _background = MutableLiveData<String>()
     val background: LiveData<String> = _background
 
-    fun setColor(selectedColor: String) {
+    fun setColor(selectedColor: Int) {
         _color.value = selectedColor
+        Log.d("color입니다", "${selectedColor}")
     }
 
     fun setGlasses(selectedGlasses: String) {
