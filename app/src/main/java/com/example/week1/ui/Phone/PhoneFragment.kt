@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.week1.databinding.FragmentPhoneBinding
 
-class PhoneFragment : Fragment(), View.OnClickListener {
+class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
 
     companion object {
         const val PERMISSION_REQUEST_CODE = 100
@@ -48,44 +47,25 @@ class PhoneFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "ㅋㅋㅋresume")
         onCheckContactsPermission()
     }
 
     private fun initLayout() {
-//        binding.includeTitle.txtTitle.text = "주소록"
         binding.contactsList.layoutManager = LinearLayoutManager(context)
     }
 
     private fun initListener() {
-        binding.btnPermission.setOnClickListener(this)
-        binding.btnAddContacts.setOnClickListener(this)
-//        binding.includeTitle.btnDelete.setOnClickListener(this)
-    }
-
-    override fun onClick(v: View?) {
-        when (v) {
-            binding.btnPermission -> {
-                requestPermission()
-            }
-            binding.btnAddContacts -> {
-                // 연락처 추가 기능 구현
-            }
-//            binding.includeTitle.btnDelete -> {
-//                // 삭제 기능 구현
-//            }
+        binding.btnPermission.setOnClickListener {
+            requestPermission()
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        binding.btnAddContacts.setOnClickListener {
+            // 연락처 추가 기능 구현
+        }
     }
 
     private fun onCheckContactsPermission() {
         val permissionDenied = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_DENIED
                 || ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED
-        Log.d(TAG, "여긴 들어오나요?")
         binding.btnPermission.isVisible = permissionDenied
         binding.txtDescription.isVisible = permissionDenied
         binding.btnAddContacts.isVisible = !permissionDenied
@@ -93,7 +73,6 @@ class PhoneFragment : Fragment(), View.OnClickListener {
         if (permissionDenied) {
             binding.txtDescription.text = "권한을 허용하셔야 이용하실 수 있습니다."
         } else {
-            Log.d(TAG,"hihi")
             getContactsList()
         }
     }
@@ -159,8 +138,13 @@ class PhoneFragment : Fragment(), View.OnClickListener {
         contactsList.addAll(list)
 
         val contactPairs = prepareContactPairs(contactsList)
-        contactsAdapter = ContactsAdapter(contactPairs)
+        contactsAdapter = ContactsAdapter(contactPairs, this)
         binding.contactsList.adapter = contactsAdapter
         contactsAdapter?.notifyDataSetChanged()
+    }
+
+    override fun onItemClick(contact: ContactsData) {
+        val dialogFragment = ContactDetailDialogFragment.newInstance(contact)
+        dialogFragment.show(parentFragmentManager, "ContactDetailDialogFragment")
     }
 }
