@@ -1,13 +1,14 @@
 package com.example.week1.ui.Phone
 
 import android.app.Dialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.week1.databinding.FragmentContactDetailDialogBinding
-
 
 class ContactDetailDialogFragment : DialogFragment() {
 
@@ -40,6 +41,13 @@ class ContactDetailDialogFragment : DialogFragment() {
         contact?.let {
             binding.txtName.text = it.name
             binding.txtNumber.text = it.number
+
+            binding.btnCall.setOnClickListener {
+                val intent = Intent(Intent.ACTION_DIAL).apply {
+                    data = Uri.parse("tel:${contact.number}")
+                }
+                startActivity(intent)
+            }
         }
     }
 
@@ -54,4 +62,3 @@ class ContactDetailDialogFragment : DialogFragment() {
         return dialog
     }
 }
-
