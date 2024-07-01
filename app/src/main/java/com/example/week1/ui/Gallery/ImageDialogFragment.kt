@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.fragment.app.DialogFragment
 
@@ -29,6 +30,7 @@ class ImageDialogFragment : DialogFragment() {
     ): View? {
         val view = inflater.inflate(R.layout.dialog_image, container, false)
         val imageView: ImageView = view.findViewById(R.id.expanded_image)
+        val closeButton: ImageButton = view.findViewById(R.id.close_button)
 
         val imageUri = arguments?.getString(ARG_IMAGE_URI)
         if (imageUri != null) {
@@ -37,7 +39,7 @@ class ImageDialogFragment : DialogFragment() {
             imageView.setImageBitmap(bitmap)
         }
 
-        imageView.setOnClickListener {
+        closeButton.setOnClickListener {
             dismiss()
         }
 
@@ -49,3 +51,4 @@ class ImageDialogFragment : DialogFragment() {
         dialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 }
+
