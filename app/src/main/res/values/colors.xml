@@ -7,9 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
     <color name="colorPrimary">#6200EE</color> <!-- 보라색 -->
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="mainblue">#4098FF</color>
+    <color name="mainpurple">#DD7CFF</color>
+    <color name="mainpink">#FF9CD2</color>
 
 <!--    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
 <!--        &lt;!&ndash; Customize your theme here &ndash;&gt;-->

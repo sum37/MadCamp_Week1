@@ -3,6 +3,7 @@
 
     <item
         android:id="@+id/navigation_Phone"
+        android:iconTint="@color/red"
         android:icon="@android:drawable/stat_sys_phone_call"
         android:title="@string/title_Phone" />
 
