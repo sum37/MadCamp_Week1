@@ -1,12 +1,10 @@
 package com.example.week1
 
-import android.app.Dialog
-import android.content.Context
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.week1.databinding.ItemImageBinding
 
@@ -40,21 +38,10 @@ class ImageAdapter : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>() {
             binding.imageView.setImageBitmap(bitmap)
 
             binding.imageView.setOnClickListener {
-                showImageDialog(context, uri)
+                val activity = it.context as FragmentActivity
+                val dialogFragment = ImageDialogFragment.newInstance(uri)
+                dialogFragment.show(activity.supportFragmentManager, "image_dialog")
             }
-        }
-
-        private fun showImageDialog(context: Context, imageUri: String) {
-            val dialog = Dialog(context, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
-            dialog.setContentView(R.layout.dialog_image)
-            val expandedImage = dialog.findViewById<ImageView>(R.id.expanded_image)
-            val inputStream = context.contentResolver.openInputStream(Uri.parse(imageUri))
-            val bitmap = BitmapFactory.decodeStream(inputStream)
-            expandedImage.setImageBitmap(bitmap)
-            expandedImage.setOnClickListener {
-                dialog.dismiss()
-            }
-            dialog.show()
         }
     }
 }

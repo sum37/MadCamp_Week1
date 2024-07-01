@@ -46,4 +46,12 @@ class RoundedImageView @JvmOverloads constructor(
 
         return bitmap
     }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val width = measuredWidth
+        setMeasuredDimension(width, width) // Set height equal to width to maintain 1:1 aspect ratio
+    }
 }
+
+
