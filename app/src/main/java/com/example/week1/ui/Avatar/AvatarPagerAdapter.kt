@@ -11,7 +11,6 @@ class AvatarPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdap
         HatFragment(),
         GlassesFragment(),
         ClothFragment(),
-        BackgroundFragment()
     )
 
     private val fragmentTitleList = listOf(
@@ -19,7 +18,6 @@ class AvatarPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdap
         "모자",
         "안경",
         "의상",
-        "배경"
     )
 
     override fun getItemCount(): Int = fragmentList.size

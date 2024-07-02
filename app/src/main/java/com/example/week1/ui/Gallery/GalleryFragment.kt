@@ -40,10 +40,10 @@ class GalleryFragment : Fragment() {
         _binding = FragmentGalleryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
-        galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = "" // 빈 문자열로 설정하여 텍스트 제거
-        }
+//        val textView: TextView = binding.textGallery
+//        galleryViewModel.text.observe(viewLifecycdd leOwner) {
+//            textView.text = "" // 빈 문자열로 설정하여 텍스트 제거
+//        }
 
         setupRecyclerView()
 
@@ -52,7 +52,6 @@ class GalleryFragment : Fragment() {
         } else {
             requestReadStoragePermission()
         }
-
         return root
     }
 

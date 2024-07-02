@@ -92,9 +92,6 @@ class AvatarFragment : Fragment() {
             updateHatVisibility(selectedHat)
         }
 
-        avatarViewModel.background.observe(viewLifecycleOwner) {
-            // Update avatar image background
-        }
     }
 
     private fun updateClothVisibility(selectedCloth: Int) {

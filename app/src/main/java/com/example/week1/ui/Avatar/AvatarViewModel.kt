@@ -19,9 +19,6 @@ class AvatarViewModel : ViewModel() {
     private val _cloth = MutableLiveData<Int>()
     val cloth: LiveData<Int> = _cloth
 
-    private val _background = MutableLiveData<Int>()
-    val background: LiveData<Int> = _background
-
     fun setColor(selectedColor: Int) {
         _color.value = selectedColor
         Log.d("color입니다", "${selectedColor}")
@@ -37,9 +34,5 @@ class AvatarViewModel : ViewModel() {
 
     fun setCloth(selectedCloth: Int) {
         _cloth.value = selectedCloth
-    }
-
-    fun setBackground(selectedBackground: Int) {
-        _background.value = selectedBackground
     }
 }
