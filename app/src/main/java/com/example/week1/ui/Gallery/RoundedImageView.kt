@@ -36,8 +36,8 @@ class RoundedImageView @JvmOverloads constructor(
         drawable ?: return null
 
         val bitmap = Bitmap.createBitmap(
-            drawable.intrinsicWidth,
-            drawable.intrinsicHeight,
+            width,
+            height,
             Bitmap.Config.ARGB_8888
         )
         val canvas = Canvas(bitmap)
@@ -45,5 +45,11 @@ class RoundedImageView @JvmOverloads constructor(
         drawable.draw(canvas)
 
         return bitmap
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val width = measuredWidth
+        setMeasuredDimension(width, width) // Set height equal to width to maintain 1:1 aspect ratio
     }
 }
