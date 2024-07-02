@@ -7,11 +7,11 @@
     tools:context=".ui.Avatar.AvatarSaveFragment">
 
     <ImageView
-        android:id="@+id/avatarImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageViewCaptured"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        />
+        android:visibility="visible" />
 
     <Button
         android:id="@+id/btnSaveImage"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="이미지 저장"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/btnApplyToContact"
@@ -27,5 +27,5 @@
         android:layout_height="wrap_content"
         android:text="연락처에 적용하기"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp" />
 </LinearLayout>
