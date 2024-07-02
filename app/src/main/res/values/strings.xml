@@ -3,4 +3,9 @@
     <string name="title_Phone">Phone</string>
     <string name="title_Gallery">Gallery</string>
     <string name="title_Avatar">Avatar</string>
+    <string name="expanded_image">Expanded Image</string>
+    <string name="close">Close</string>
+    <string name="capture">Capture</string>
+    <string name="save">Save</string>
+
 </resources>

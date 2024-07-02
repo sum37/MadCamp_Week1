@@ -4,7 +4,8 @@
     <item
         android:id="@+id/navigation_Phone"
         android:icon="@android:drawable/stat_sys_phone_call"
-        android:title="@string/title_Phone" />
+        android:title="@string/title_Phone"
+        android:iconTint="@color/red" />
 
     <item
         android:id="@+id/navigation_Gallery"
