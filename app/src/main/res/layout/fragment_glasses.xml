@@ -6,21 +6,24 @@
     android:gravity="center">
 
     <!-- Replace with actual color options -->
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setGlasses1"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/glasses1" />
+        android:background="@drawable/glasses1_menu" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setGlasses2"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/glasses2" />
+        android:background="@drawable/glasses2_menu" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setGlasses3"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
-        android:background="@drawable/glasses3" />
+        android:background="@drawable/glasses3_menu" />
 </LinearLayout>

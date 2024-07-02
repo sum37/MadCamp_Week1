@@ -6,19 +6,22 @@
     android:gravity="center">
 
     <!-- Replace with actual color options -->
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setBG1"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
         android:background="@drawable/color_option1" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setBG2"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"
         android:background="@drawable/color_option2" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setBG3"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="8dp"

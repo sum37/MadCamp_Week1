@@ -6,20 +6,118 @@
     android:orientation="vertical"
     tools:context=".ui.Avatar.AvatarFragment"
     android:paddingBottom="50dp">
-
-    <TextView
-        android:id="@+id/text_avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:id="@+id/avatar_image"
+    <FrameLayout
+        android:id="@+id/avatar_image_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/jelly"
-        android:scaleType="fitCenter"
-        android:contentDescription="@string/app_name" />
+        android:layout_height="350dp">
+
+        <ImageView
+            android:id="@+id/avatar_image_body"
+            android:layout_width="240dp"
+            android:layout_height="225dp"
+            android:layout_weight="1"
+            android:src="@drawable/jelly_body"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name" />
+        <ImageView
+            android:id="@+id/avatar_image_line"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_weight="1"
+            android:src="@drawable/jelly_line"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name" />
+        
+        <ImageView
+            android:id="@+id/avatar_image_cloth1"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/cloth1_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_cloth2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/cloth2_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+        <ImageView
+            android:id="@+id/avatar_image_cloth3"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/cloth3_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_cloth4"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/cloth4_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_cloth5"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/cloth5_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_hat1"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/hat1_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_hat2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/hat2_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_hat3"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/hat3_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_glasses1"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/glasses1_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_glasses2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/glasses2_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+        <ImageView
+            android:id="@+id/avatar_image_glasses3"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/glasses3_inrec"
+            android:layout_gravity="center"
+            android:visibility = "invisible"/>
+
+    </FrameLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
@@ -30,8 +128,9 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="@color/white"
         />
 
 </LinearLayout>

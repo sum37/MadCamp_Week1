@@ -10,36 +10,36 @@ class AvatarViewModel : ViewModel() {
     private val _color = MutableLiveData<Int>()
     val color: LiveData<Int> = _color
 
-    private val _glasses = MutableLiveData<String>()
-    val glasses: LiveData<String> = _glasses
+    private val _glasses = MutableLiveData<Int>()
+    val glasses: LiveData<Int> = _glasses
 
-    private val _hat = MutableLiveData<String>()
-    val hat: LiveData<String> = _hat
+    private val _hat = MutableLiveData<Int>()
+    val hat: LiveData<Int> = _hat
 
-    private val _cloth = MutableLiveData<String>()
-    val cloth: LiveData<String> = _cloth
+    private val _cloth = MutableLiveData<Int>()
+    val cloth: LiveData<Int> = _cloth
 
-    private val _background = MutableLiveData<String>()
-    val background: LiveData<String> = _background
+    private val _background = MutableLiveData<Int>()
+    val background: LiveData<Int> = _background
 
     fun setColor(selectedColor: Int) {
         _color.value = selectedColor
         Log.d("color입니다", "${selectedColor}")
     }
 
-    fun setGlasses(selectedGlasses: String) {
+    fun setGlasses(selectedGlasses: Int) {
         _glasses.value = selectedGlasses
     }
 
-    fun setHat(selectedHat: String) {
+    fun setHat(selectedHat: Int) {
         _hat.value = selectedHat
     }
 
-    fun setCloth(selectedCloth: String) {
+    fun setCloth(selectedCloth: Int) {
         _cloth.value = selectedCloth
     }
 
-    fun setBackground(selectedBackground: String) {
+    fun setBackground(selectedBackground: Int) {
         _background.value = selectedBackground
     }
 }

@@ -6,21 +6,38 @@
     android:gravity="center">
 
     <!-- Replace with actual color options -->
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/cloth1" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setCloth1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/cloth1_menu" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/cloth2" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setCloth2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/cloth2_menu" />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/cloth1" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setCloth3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/cloth3_menu" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setCloth4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/cloth4_menu" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setCloth5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/cloth5_menu" />
 </LinearLayout>

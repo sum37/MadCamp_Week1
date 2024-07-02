@@ -58,9 +58,7 @@ class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
         binding.btnPermission.setOnClickListener {
             requestPermission()
         }
-        binding.btnAddContacts.setOnClickListener {
-            // 연락처 추가 기능 구현
-        }
+
     }
 
     private fun onCheckContactsPermission() {
@@ -68,7 +66,6 @@ class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
                 || ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_DENIED
         binding.btnPermission.isVisible = permissionDenied
         binding.txtDescription.isVisible = permissionDenied
-        binding.btnAddContacts.isVisible = !permissionDenied
         binding.contactsList.isVisible = !permissionDenied
         if (permissionDenied) {
             binding.txtDescription.text = "권한을 허용하셔야 이용하실 수 있습니다."
