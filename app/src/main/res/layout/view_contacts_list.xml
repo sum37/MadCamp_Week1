@@ -30,10 +30,11 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/default_image" />
+            android:id="@+id/imgContactPhoto1"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/default_image" />
 
         <TextView
             android:id="@+id/txtName1"
@@ -71,10 +72,11 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/default_image" />
+            android:id="@+id/imgContactPhoto2"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/default_image" />
 
         <TextView
             android:id="@+id/txtName2"
