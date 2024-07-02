@@ -2,14 +2,11 @@ package com.example.week1.ui.Phone
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import android.net.Uri
-
+import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class ContactsData(
-    val id: Int,
-    val name: String,
-    val number: String,
-    val photoUri: Uri? //
+    val id: @RawValue Int,
+    val name: @RawValue String,
+    val number: @RawValue String
 ) : Parcelable
-

@@ -3,7 +3,7 @@ package com.example.week1.ui.Phone
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.week1.databinding.FragmentContactDetailDialogBinding
+import com.example.week1.databinding.ViewContactItemBinding
 
 class ContactsAdapter(
     private val contacts: List<ContactsData>,
@@ -14,7 +14,7 @@ class ContactsAdapter(
         fun onItemClick(contact: ContactsData)
     }
 
-    inner class ContactViewHolder(val binding: FragmentContactDetailDialogBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ContactViewHolder(val binding: ViewContactItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(contact: ContactsData) {
             binding.contact = contact
             binding.executePendingBindings()
@@ -32,7 +32,7 @@ class ContactsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = FragmentContactDetailDialogBinding.inflate(layoutInflater, parent, false)
+        val binding = ViewContactItemBinding.inflate(layoutInflater, parent, false)
         return ContactViewHolder(binding)
     }
 
@@ -42,5 +42,3 @@ class ContactsAdapter(
 
     override fun getItemCount() = contacts.size
 }
-
-

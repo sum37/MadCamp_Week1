@@ -1,5 +1,5 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -8,48 +8,30 @@
     </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/contactImage"
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:layout_margin="10dp"
-            app:imageUri="@{contact.photoUri}" />
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/txtName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{contact.name}"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="@{contact.name}"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/txtNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@{contact.number}"
-                android:textSize="16sp" />
+        <TextView
+            android:id="@+id/txtNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{contact.number}"
+            android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/btnCall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_menu_call"
-                android:contentDescription="Call"
-                android:background="?attr/selectableItemBackgroundBorderless" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call" />
     </LinearLayout>
-</layout>
 
+</layout>
