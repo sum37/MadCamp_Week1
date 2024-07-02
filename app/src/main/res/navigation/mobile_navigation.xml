@@ -21,5 +21,42 @@
         android:id="@+id/navigation_Avatar"
         android:name="com.example.week1.ui.Avatar.AvatarFragment"
         android:label="@string/title_Avatar"
-        tools:layout="@layout/fragment_avatar" />
+        tools:layout="@layout/fragment_avatar">
+        <action
+            android:id="@+id/action_avatarFragment_to_avatarSaveFragment"
+            app:destination="@id/navigation_AvatarSave" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_AvatarSave"
+        android:name="com.example.week1.ui.Avatar.AvatarSaveFragment"
+        android:label="Save Avatar"
+        tools:layout="@layout/fragment_avatar_save" />
 </navigation>
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<navigation xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:id="@+id/mobile_navigation"-->
+    <!--    app:startDestination="@+id/navigation_Phone">-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_Phone"-->
+    <!--        android:name="com.example.week1.ui.Phone.PhoneFragment"-->
+    <!--        android:label="@string/title_Phone"-->
+    <!--        tools:layout="@layout/fragment_phone" />-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_Gallery"-->
+    <!--        android:name="com.example.week1.ui.Gallery.GalleryFragment"-->
+    <!--        android:label="@string/title_Gallery"-->
+    <!--        tools:layout="@layout/fragment_gallery" />-->
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/navigation_Avatar"-->
+    <!--        android:name="com.example.week1.ui.Avatar.AvatarFragment"-->
+    <!--        android:label="@string/title_Avatar"-->
+    <!--        tools:layout="@layout/fragment_avatar" />-->
+    <!--</navigation>-->
+

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin") // Safe Args 플러그인 추가
 }
 
 android {
@@ -48,6 +49,9 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation("androidx.navigation:navigation-safe-args-generator:2.5.3") {// Safe Args 종속성 추가
+        exclude(group = "xmlpull", module = "xmlpull")
+        exclude(group = "xpp3", module = "xpp3")}
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

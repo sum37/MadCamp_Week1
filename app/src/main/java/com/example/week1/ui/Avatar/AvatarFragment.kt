@@ -16,6 +16,7 @@ import com.example.week1.R
 import com.example.week1.databinding.FragmentAvatarBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
+
 class AvatarFragment : Fragment() {
 
     private var _binding: FragmentAvatarBinding? = null
@@ -70,6 +71,11 @@ class AvatarFragment : Fragment() {
         }.attach()
 
         observeViewModel()
+
+        binding.btnSaveAvatar.setOnClickListener {
+            val dialog = AvatarSaveFragment()
+            dialog.show(parentFragmentManager, "AvatarSaveDialogFragment")
+        }
 
         return root
     }
@@ -126,6 +132,17 @@ class AvatarFragment : Fragment() {
             Log.d("AvatarFragment", "Drawable not found")
         }
     }
+
+    // AvatarFragment.kt
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        binding.btnSaveAvatar.setOnClickListener {
+//            val action = AvatarFragmentDirections.actionAvatarFragmentToAvatarSaveFragment()
+//            findNavController().navigate(action)
+//        }
+//    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
