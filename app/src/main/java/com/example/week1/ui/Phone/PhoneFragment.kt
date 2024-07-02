@@ -124,9 +124,10 @@ class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
         contacts?.let {
             while (it.moveToNext()) {
                 val contactsId = contacts.getInt(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.CONTACT_ID))
+                val rawContactId = getRawContactId(contactsId)
                 val name = contacts.getString(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
                 val number = contacts.getString(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                list.add(ContactsData(contactsId, name, number))
+                list.add(ContactsData(contactsId, rawContactId, name, number))
             }
         }
         list.sortBy { it.name }
@@ -138,6 +139,26 @@ class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
         contactsAdapter = ContactsAdapter(contactPairs, this)
         binding.contactsList.adapter = contactsAdapter
         contactsAdapter?.notifyDataSetChanged()
+    }
+
+    private fun getRawContactId(contactId: Int): Int {
+        val rawContactUri = ContactsContract.RawContacts.CONTENT_URI
+        val projection = arrayOf(ContactsContract.RawContacts._ID)
+        val selection = "${ContactsContract.RawContacts.CONTACT_ID} = ?"
+        val selectionArgs = arrayOf(contactId.toString())
+
+        requireContext().contentResolver.query(
+            rawContactUri,
+            projection,
+            selection,
+            selectionArgs,
+            null
+        )?.use { cursor ->
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(cursor.getColumnIndexOrThrow(ContactsContract.RawContacts._ID))
+            }
+        }
+        return -1
     }
 
     override fun onItemClick(contact: ContactsData) {
