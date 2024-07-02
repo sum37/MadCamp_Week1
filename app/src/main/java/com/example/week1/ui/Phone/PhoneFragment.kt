@@ -1,6 +1,5 @@
 package com.example.week1.ui.Phone
 
-import ContactsAdapter
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
@@ -148,3 +147,4 @@ class PhoneFragment : Fragment(), ContactsAdapter.OnItemClickListener {
         dialogFragment.show(parentFragmentManager, "ContactDetailDialogFragment")
     }
 }
+

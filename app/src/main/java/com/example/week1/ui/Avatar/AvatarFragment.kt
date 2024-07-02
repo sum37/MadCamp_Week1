@@ -12,6 +12,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,14 +27,19 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.week1.R
 import com.example.week1.databinding.FragmentAvatarBinding
+import com.example.week1.ui.Phone.ContactsAdapter
+import com.example.week1.ui.Phone.ContactsData
 import com.google.android.material.tabs.TabLayoutMediator
+import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.OutputStream
 
-class AvatarFragment : Fragment() {
+class AvatarFragment : Fragment(), ContactsAdapter.OnItemClickListener {
 
     private var _binding: FragmentAvatarBinding? = null
     private val binding get() = _binding!!
@@ -41,6 +47,10 @@ class AvatarFragment : Fragment() {
     private lateinit var avatarImageView: ImageView
 
     private val REQUEST_WRITE_EXTERNAL_STORAGE = 1
+    private var capturedImage: Bitmap? = null // 캡쳐한 이미지를 저장할 변수
+    private var contactsList = ArrayList<ContactsData>() // 연락처 리스트를 저장할 변수
+    private lateinit var contactsAdapter: ContactsAdapter
+    private lateinit var contactsRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,9 +79,19 @@ class AvatarFragment : Fragment() {
             tab.text = adapter.getTitle(position)
         }.attach()
 
-        observeViewModel()
-
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // RecyclerView 초기화
+        contactsRecyclerView = view.findViewById(R.id.contactsList)
+        contactsAdapter = ContactsAdapter(contactsList, this)
+        contactsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        contactsRecyclerView.adapter = contactsAdapter
+
+        observeViewModel()
     }
 
     private fun changeVectorDrawableColor(drawableId: Int, colorId: Int) {
@@ -118,6 +138,7 @@ class AvatarFragment : Fragment() {
         val canvas = Canvas(bitmap)
         // Draw the view on the canvas
         view.draw(canvas)
+        capturedImage = bitmap // 캡쳐한 이미지를 저장
         return bitmap
     }
 
@@ -143,6 +164,12 @@ class AvatarFragment : Fragment() {
             } else {
                 saveImageToGallery(bitmap)
             }
+        }
+
+        val setContactImageButton: Button = dialogView.findViewById(R.id.set_contact_image_button)
+        setContactImageButton.setOnClickListener {
+            dialog.dismiss()
+            showContactSelectionDialog()
         }
 
         dialog.show()
@@ -189,6 +216,106 @@ class AvatarFragment : Fragment() {
         }
     }
 
+    private fun showContactSelectionDialog() {
+        // 연락처 리스트를 가져오는 로직 추가
+        getContactsList()
+
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_contacts_list, null)
+        val recyclerView: RecyclerView = dialogView.findViewById(R.id.contacts_recycler_view)
+        val contactsAdapter = ContactsAdapter(contactsList, this)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = contactsAdapter
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .setPositiveButton(null, null)
+            .create()
+
+        dialog.show()
+    }
+
+    private fun getContactsList() {
+        val contacts = requireContext().contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        val list = ArrayList<ContactsData>()
+        contacts?.let {
+            while (it.moveToNext()) {
+                val contactsId = contacts.getInt(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.CONTACT_ID))
+                val name = contacts.getString(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
+                val number = contacts.getString(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                val photoUriString = contacts.getString(contacts.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.PHOTO_URI))
+                val photoUri = photoUriString?.let { Uri.parse(it) }
+                list.add(ContactsData(contactsId, name, number, photoUri))
+            }
+        }
+        list.sortBy { it.name }
+        contacts?.close()
+        contactsList.clear()
+        contactsList.addAll(list)
+        contactsAdapter.notifyDataSetChanged() // 리스트 갱신 후 어댑터에 알림
+    }
+
+    private fun changeContactPhoto(contactId: Int) {
+        Log.d("AvatarFragment", "changeContactPhoto called with contactId: $contactId")
+        capturedImage?.let { bitmap ->
+            val photoBytes = bitmapToByteArray(bitmap)
+            val contentValues = ContentValues().apply {
+                put(ContactsContract.Data.RAW_CONTACT_ID, contactId) // 여기서 contactId가 RAW_CONTACT_ID인지 확인 필요
+                put(ContactsContract.Data.IS_SUPER_PRIMARY, 1)
+                put(ContactsContract.CommonDataKinds.Photo.PHOTO, photoBytes)
+                put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+            }
+
+            val selection = "${ContactsContract.Data.CONTACT_ID} = ? AND ${ContactsContract.Data.MIMETYPE} = ?"
+            val selectionArgs = arrayOf(contactId.toString(), ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+            val updatedRows = requireContext().contentResolver.update(ContactsContract.Data.CONTENT_URI, contentValues, selection, selectionArgs)
+
+            Log.d("AvatarFragment", "updatedRows: $updatedRows")
+
+            if (updatedRows > 0) {
+                Log.d("AvatarFragment", "연락처 사진이 변경되었습니다.")
+                Toast.makeText(requireContext(), "연락처 사진이 변경되었습니다.", Toast.LENGTH_SHORT).show()
+                updateContactList() // 업데이트 후 연락처 리스트 새로고침
+            } else {
+                Log.d("AvatarFragment", "업데이트 실패, 새로 추가 시도")
+                // 업데이트가 실패했을 때, 새로 추가
+                val newContentValues = ContentValues().apply {
+                    put(ContactsContract.Data.RAW_CONTACT_ID, contactId) // 이 부분이 RAW_CONTACT_ID인지 확인 필요
+                    put(ContactsContract.Data.IS_SUPER_PRIMARY, 1)
+                    put(ContactsContract.CommonDataKinds.Photo.PHOTO, photoBytes)
+                    put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Photo.CONTENT_ITEM_TYPE)
+                }
+                requireContext().contentResolver.insert(ContactsContract.Data.CONTENT_URI, newContentValues)
+                Toast.makeText(requireContext(), "연락처 사진이 새로 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                updateContactList() // 업데이트 후 연락처 리스트 새로고침
+            }
+
+            // 현재 프래그먼트를 종료하고 이전 탭으로 돌아가기
+            parentFragmentManager.popBackStack()
+        } ?: run {
+            Log.d("AvatarFragment", "캡쳐된 이미지가 없습니다.")
+            Toast.makeText(requireContext(), "캡쳐된 이미지가 없습니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun bitmapToByteArray(bitmap: Bitmap): ByteArray {
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        return stream.toByteArray()
+    }
+
+    private fun updateContactList() {
+        // 연락처 리스트를 새로 가져와서 업데이트
+        getContactsList()
+        // RecyclerView를 새로고침
+        contactsAdapter.notifyDataSetChanged()
+    }
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_WRITE_EXTERNAL_STORAGE) {
@@ -206,6 +333,15 @@ class AvatarFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onItemClick(contact: ContactsData) {
+        // 연락처 아이템 클릭 시 처리 로직
+        changeContactPhoto(contact.id)
+    }
 }
+
+
+
+
 
 

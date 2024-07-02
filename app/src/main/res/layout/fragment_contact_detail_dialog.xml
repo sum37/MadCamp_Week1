@@ -1,8 +1,10 @@
-<!-- res/layout/fragment_contact_detail_dialog.xml -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <!-- ViewModel or other data binding variables -->
+        <variable
+            name="contact"
+            type="com.example.week1.ui.Phone.ContactsData" />
     </data>
 
     <LinearLayout
@@ -13,16 +15,17 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/contactImage"
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_margin="10dp"
-            android:src="@drawable/default_image" />
+            app:imageUri="@{contact.photoUri}" />
 
         <TextView
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="@{contact.name}"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -36,7 +39,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Phone Number"
+                android:text="@{contact.number}"
                 android:textSize="16sp" />
 
             <ImageButton
@@ -49,3 +52,4 @@
         </LinearLayout>
     </LinearLayout>
 </layout>
+
