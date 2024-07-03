@@ -38,6 +38,16 @@ class ColorFragment : Fragment() {
             avatarViewModel.setColor(R.color.color_option3)
         }
 
+        binding.setColor4.setOnClickListener {
+            Log.d("ColorFragment", "setColor3 clicked")
+            avatarViewModel.setColor(R.color.color_option4)
+        }
+
+        binding.setColor5.setOnClickListener {
+            Log.d("ColorFragment", "setColor3 clicked")
+            avatarViewModel.setColor(R.color.color_option5)
+        }
+
         return binding.root
     }
 

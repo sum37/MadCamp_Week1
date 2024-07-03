@@ -14,8 +14,10 @@
     <color name="mainblue">#4098FF</color>
     <color name="mainpurple">#DD7CFF</color>
     <color name="mainpink">#FF9CD2</color>
-    <color name="color_option1">#FF9CD2</color>
+    <color name="color_option1">#FFFFFF</color>
     <color name="color_option2">#DD7CFF</color>
     <color name="color_option3">#4098FF</color>
+    <color name="color_option4">#FF9CD2</color>
+    <color name="color_option5">#4098FF</color>
 
 </resources>

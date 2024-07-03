@@ -27,4 +27,18 @@
         android:background="@drawable/color_option3"
     />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setColor4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/color_option4"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/setColor5"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/color_option5"
+        />
+
 </LinearLayout>
