@@ -1,6 +1,6 @@
 # JellyCrushSaga
 
-<p style="color:pink; font-size:24px; font-weight:bold;">말랑말랑</p>
+**말랑말랑**
 
 JellyCrushSaga는 세 개의 주요 탭으로 구성된 모바일 애플리케이션입니다. 사용자는 연락처 관리, 갤러리 탐색 및 젤리 아바타 꾸미기를 할 수 있습니다.
 
