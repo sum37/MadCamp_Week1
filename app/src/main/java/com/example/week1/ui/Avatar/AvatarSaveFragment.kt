@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.ContentValues
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.media.MediaScannerConnection
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -174,21 +175,24 @@ class AvatarSaveFragment : DialogFragment() {
     private fun saveImage() {
         val filename = "captured_image_${System.currentTimeMillis()}.png"
         var fos: OutputStream? = null
+        var savedImagePath: String? = null
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 val contentValues = ContentValues().apply {
                     put(MediaStore.Images.Media.DISPLAY_NAME, filename)
                     put(MediaStore.Images.Media.MIME_TYPE, "image/png")
-                    put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/MyApp")
+                    put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyApp")
                 }
                 val contentResolver = requireContext().contentResolver
                 val imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
                 fos = imageUri?.let { contentResolver.openOutputStream(it) }
+                savedImagePath = imageUri?.toString()
             } else {
                 val imagesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()
                 val file = File(imagesDir, filename)
                 fos = FileOutputStream(file)
+                savedImagePath = file.absolutePath
             }
 
             if (fos != null) {
@@ -197,6 +201,9 @@ class AvatarSaveFragment : DialogFragment() {
                 fos.close()
                 Toast.makeText(requireContext(), "이미지가 저장되었습니다.", Toast.LENGTH_SHORT).show()
                 Log.d("AvatarSaveFragment", "이미지 저장 완료: $filename")
+                savedImagePath?.let { path ->
+                    MediaScannerConnection.scanFile(context, arrayOf(path), null, null)
+                }
             } else {
                 Toast.makeText(requireContext(), "이미지 저장 실패", Toast.LENGTH_SHORT).show()
             }
@@ -226,3 +233,4 @@ class AvatarSaveFragment : DialogFragment() {
         }
     }
 }
+
