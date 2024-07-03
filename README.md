@@ -7,23 +7,23 @@ JellyCrushSaga는 연락처 관리, 갤러리 탐색 및 젤리 아바타 꾸미
 ## 기능
 
 ### 1. 연락처 탭
-![연락처 기본화면]()
-![전화걸기]()
+![연락처 기본화면](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A51.jpeg)
+![전화걸기](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A52.jpeg)
 - 연락처를 확인하고 전화를 걸 수 있습니다.
 - 각 연락처에 젤리 아바타를 대표 이미지로 지정할 수 있습니다.
 
 ### 2. 갤러리 탭
-![갤러리 기본화면]()
-![사진 확대]()
+![갤러리 기본화면](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%80%E1%85%A2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%85%E1%85%B5.jpg)
+![사진 확대](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%80%E1%85%A2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%85%E1%85%B52.jpg)
 - 기기의 갤러리에 있는 사진을 볼 수 있습니다.
 - 사진을 클릭하여 확대하여 볼 수 있습니다.
 - 사용자가 만든 젤리 아바타와 저장하고 볼 수 있습니다.
 
 ### 3. 젤리 아바타 꾸미기 탭
-![jelly custom 기본화면]()
-![jelly 저장]()
-![jelly 연락처 적용]()
-![jelly 갤러리 저장]()
+![jelly custom 기본화면](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8C%E1%85%A6%E1%86%AF%E1%84%85%E1%85%B51.jpg)
+![jelly 저장](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8C%E1%85%A6%E1%86%AF%E1%84%85%E1%85%B52.jpg)
+![jelly 연락처 적용](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A5_jelly.jpeg)
+![jelly 갤러리 저장](https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%80%E1%85%A2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%85%E1%85%B5_jelly.jpg)
 - 사용자가 젤리처럼 생긴 아바타를 꾸밀 수 있습니다.
 - 꾸민 아바타를 갤러리에 저장할 수 있습니다.
 - 저장한 아바타를 연락처 대표 이미지로 지정할 수 있습니다.
