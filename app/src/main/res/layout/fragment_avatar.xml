@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="저장"
         android:layout_gravity="top"
-        android:layout_marginTop="0dp"/>
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="305dp"/>
 
     <FrameLayout
         android:id="@+id/avatar_image_view"

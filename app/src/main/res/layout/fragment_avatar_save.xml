@@ -4,28 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ui.Avatar.AvatarSaveFragment">
+
 
     <ImageView
         android:id="@+id/imageViewCaptured"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_gravity="center"
+        android:scaleType="centerCrop"
         android:visibility="visible" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
 
     <Button
         android:id="@+id/btnSaveImage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="이미지 저장"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        />
 
     <Button
         android:id="@+id/btnApplyToContact"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="연락처에 적용하기"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp" />
+        android:padding="12dp"
+        />
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
 </LinearLayout>
