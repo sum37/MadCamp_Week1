@@ -30,7 +30,7 @@ JellyCrushSaga는 연락처 관리, 갤러리 탐색 및 젤리 아바타 꾸미
   <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8C%E1%85%A6%E1%86%AF%E1%84%85%E1%85%B51.jpg" alt="jelly custom 기본화면" width="200" style="margin-right: 10px;">
   <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8C%E1%85%A6%E1%86%AF%E1%84%85%E1%85%B52.jpg" alt="jelly 저장" width="200" style="margin-right: 10px;">
   <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A5_jelly.jpeg" alt="jelly 연락처 적용" width="200" style="margin-right: 10px;">
-  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%80%E1%85%A2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%85%E1%85%B5_jelly.jpg" alt="jelly 갤러리 저장" width="200" style="margin-right: 10px;">
+  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%80%E1%85%A2%E1%86%AF%E1%84%85%E1%85%A5%E1%84%85%E1%85%B5_jelly.jpeg" alt="jelly 갤러리 저장" width="200" style="margin-right: 10px;">
 </p>
 
 - 사용자가 젤리처럼 생긴 아바타를 꾸밀 수 있습니다.
