@@ -8,9 +8,10 @@ JellyCrushSaga는 연락처 관리, 갤러리 탐색 및 젤리 아바타 꾸미
 
 ### 1. 연락처 탭
 <p align="center">
-  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A51.jpeg" alt="연락처 기본화면" width="300" style="margin-right: 10px;">
-  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A52.jpeg" alt="전화걸기" width="300">
+  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A51.jpeg" alt="연락처 기본화면" width="300" style="margin-right: 20px;">
+  <img src="https://github.com/sum37/MadCamp_Week1/blob/main/%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%85%E1%85%A1%E1%86%A8%E1%84%8E%E1%85%A52.jpeg" alt="전화걸기" width="300" style="margin-left: 20px;">
 </p>
+
 - 연락처를 확인하고 전화를 걸 수 있습니다.
 - 각 연락처에 젤리 아바타를 대표 이미지로 지정할 수 있습니다.
 
