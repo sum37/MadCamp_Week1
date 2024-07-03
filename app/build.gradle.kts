@@ -57,7 +57,6 @@ dependencies {
     implementation(libs.androidx.ui.graphics.android)
     kapt("com.github.bumptech.glide:compiler:4.12.0")
     implementation("de.hdodenhof:circleimageview:2.2.0")
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -9,7 +9,6 @@
         android:id="@+id/setColor1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginLeft="5dp"
         android:background="@drawable/color_option1"
         />
 
@@ -25,7 +24,6 @@
         android:id="@+id/setColor3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginRight="5dp"
         android:background="@drawable/color_option3"
     />
 

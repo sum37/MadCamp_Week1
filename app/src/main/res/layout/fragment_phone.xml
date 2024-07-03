@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#f0f0f0"
     tools:context=".ui.Phone.PhoneFragment"
-    android:layout_marginBottom="50dp">
+    >
 
     <TextView
         android:id="@+id/txtDescription"
@@ -32,7 +32,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactsList"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent" />
